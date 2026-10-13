@@ -1,0 +1,1 @@
+window.HEADS_PUBLIC={"backend":"https://backend.example.test","key":"sb_publishable_fixture"};

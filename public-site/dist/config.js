@@ -1,1 +1,1 @@
-window.HEADS_PUBLIC={"backend":"https://backend.example.test","key":"sb_publishable_fixture"};
+window.HEADS_PUBLIC={"backend":"https://doaxbytajesztseatvpc.supabase.co","key":"sb_publishable_fC88UfK7S65Yb2zOhpAiPg_0Lz9jVOS"};

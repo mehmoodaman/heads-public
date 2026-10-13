@@ -10,6 +10,15 @@ test('publishing requires owner identity, HTTPS and client-only credentials',()=
  assert.throws(()=>configuration({...fixture,EXPO_PUBLIC_SUPABASE_PUBLISHABLE_KEY:'sb_secret_fixture'}));
  assert.throws(()=>configuration({...fixture,HEADS_PUBLIC_SITE_URL:'http://example.test'}));
 });
+
+test('disabled Sentry needs no retention declaration and makes no collection claim',async()=>{
+ const directory=await mkdtemp(join(tmpdir(),'heads-public-disabled-'));
+ await build({...fixture,HEADS_SENTRY_RETENTION_DAYS:undefined},directory);
+ const privacy=await readFile(join(directory,'privacy.html'),'utf8');
+ assert.match(privacy,/Sentry diagnostics are disabled for this beta/);
+ assert.doesNotMatch(privacy,/It also sends sanitized|expire after null/);
+ assert.throws(()=>configuration({...fixture,HEADS_SENTRY_RETENTION_DAYS:'0'}));
+});
 test('only dedicated public pages and assets are published; operator text is escaped',async()=>{
  const directory=await mkdtemp(join(tmpdir(),'heads-public-'));
  await build({...fixture,HEADS_PUBLIC_OPERATOR:'<script>unsafe</script>'},directory);

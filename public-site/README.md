@@ -8,7 +8,7 @@ Before publishing, the owner must confirm a monitored support address and operat
 - `HEADS_PUBLIC_OPERATOR`: responsible operator's public identity.
 - `HEADS_PUBLIC_SITE_URL`: HTTPS directory (include the repository path for project Pages).
 - `EXPO_PUBLIC_SUPABASE_URL` and `EXPO_PUBLIC_SUPABASE_PUBLISHABLE_KEY`: the pilot backend and its public key only.
-- `HEADS_SENTRY_RETENTION_DAYS`: owner-confirmed project retention of 1–90 days; apply the same value in Sentry before publication.
+- `HEADS_SENTRY_RETENTION_DAYS`: omit when diagnostics are disabled; otherwise use confirmed retention of 1-90 days.
 
 Configure Pages to deploy through GitHub Actions. The workflow is manual-only; set environment reviewers according to the owner's release policy. Trigger it only with explicit deployment authorization. No publication has been performed by this implementation.
 

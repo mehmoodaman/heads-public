@@ -30,6 +30,9 @@ jobs:
         with:
           node-version: '24'
 
+      - name: Test public pages
+        run: node --test public-site/build.test.mjs public-site/portal.test.mjs
+
       - name: Generate website
         env:
           HEADS_SUPPORT_EMAIL: ${{ vars.HEADS_SUPPORT_EMAIL }}
@@ -37,7 +40,7 @@ jobs:
           HEADS_PUBLIC_SITE_URL: ${{ vars.HEADS_PUBLIC_SITE_URL }}
           EXPO_PUBLIC_SUPABASE_URL: ${{ vars.EXPO_PUBLIC_SUPABASE_URL }}
           EXPO_PUBLIC_SUPABASE_PUBLISHABLE_KEY: ${{ vars.EXPO_PUBLIC_SUPABASE_PUBLISHABLE_KEY }}
-          HEADS_SENTRY_RETENTION_DAYS: ${{ vars.HEADS_SENTRY_RETENTION_DAYS }}
+          HEADS_SENTRY_RETENTION_DAYS: ''
         run: |
           node public-site/build.mjs
           cp public-site/index.html public-site/dist/index.html

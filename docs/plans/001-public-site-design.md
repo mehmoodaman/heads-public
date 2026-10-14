@@ -14,7 +14,7 @@ Progress:
 - [x] Include homepage in builder and test navigation/publication.
 - [x] Run Node syntax checks and all five public-site tests.
 - [x] Inspect desktop and 390px mobile screenshots; verify no horizontal overflow at 320, 390, 768 and 1440px.
-- [ ] Owner review, approved publication and live HTTPS acceptance.
+- [x] Owner review, approved publication and live HTTPS acceptance.
 
 Release authorization: owner explicitly approved publishing the redesign and repairing live HTTPS on October 13, 2026.
 
@@ -22,5 +22,6 @@ Discoveries: live DNS matches GitHub Pages apex and www records. TLS verificatio
 
 Validation: node --check public-site/build.mjs; node --check public-site/portal.js; node --test public-site/build.test.mjs public-site/portal.test.mjs. After approved deployment, check all five pages over HTTPS and the deletion flow on the intended Staging account. Real inbox/device/deletion acceptance is not established by local tests.
 
-Outcomes: local design and automated acceptance passed. Remote publication, certificate repair, Safari/physical-iPhone review and real deletion acceptance remain pending. No live settings changed.
+Outcomes: local design and all five automated tests passed. Approved redesign commit e892e95 deployed successfully through run 38493477273: https://github.com/mehmoodaman/heads-public/actions/runs/38493477273. Custom domain removal/re-addition restarted certificate issuance; certificate covers headsapp.co and www.headsapp.co and expires January 11, 2027. HTTPS enforcement enabled and read back. All five HTML pages and three assets return 200 over verified HTTPS with expected content. HTTP apex/www and HTTPS www redirect to https://headsapp.co/. No TLS checks bypassed, no account actions submitted. Safari/physical-iPhone review and real deletion acceptance remain manual and unverified. Domain ownership verification remains separate; no unrelated DNS records changed.
+
 

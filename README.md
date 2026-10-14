@@ -1,6 +1,6 @@
 ﻿# heads-public
 
-Static Heads website hosted on GitHub Pages. The landing page and document/form styles use the mobile app's cream, ink and orange palette. No framework, external fonts or tracking are needed.
+Static Heads website hosted on GitHub Pages. The landing page and document/form styles use a warm charcoal, soft white and orange palette. No framework, external fonts or tracking are needed.
 
 Run checks: `node --check public-site/build.mjs` and `node --test public-site/build.test.mjs public-site/portal.test.mjs`.
 

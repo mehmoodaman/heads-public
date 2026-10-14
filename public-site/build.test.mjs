@@ -34,6 +34,8 @@ test('homepage and document navigation publish together without external resourc
  await build(fixture,directory);
  const home=await readFile(join(directory,'index.html'),'utf8');
  assert.match(home,/Coming soon to iPhone/);
+ assert.doesNotMatch(home,/for the love of pickup|basketball first\. always about playing\./i);
+ assert.match(home,/<meta name="theme-color" content="#191819">/);
  assert.match(home,/not live activity/);
  for(const slug of ['privacy','terms','support','delete-account']){
   assert.ok(home.includes('href="'+slug+'.html"'));

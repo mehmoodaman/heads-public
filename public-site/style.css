@@ -1,17 +1,21 @@
 :root {
-  color-scheme:light;
-  --background:#faf8f5;
-  --surface:#fff;
-  --ink:#211b25;
-  --muted:#625b66;
-  --subtle:#ede8e1;
+  color-scheme:dark;
+  --background:#191819;
+  --surface:#242224;
+  --ink:#f2ede7;
+  --muted:#bcb5b0;
+  --subtle:#353133;
   --brand:#ff6b2b;
-  --accent:#b83a10;
-  --accent-surface:#fff0e5;
-  --success:#226640;
+  --accent:#ff9863;
+  --accent-surface:#2d2420;
+  --success:#8acda3;
   --radius:16px;
   --control:12px;
-  --motion:150ms
+  --motion:150ms;
+  --button-ink:#211b25;
+  --button-hover:#ffaf85;
+  --border:#494244;
+  --shadow:#00000030
 }
 * {
   box-sizing:border-box
@@ -141,7 +145,7 @@ nav a:hover,nav a[aria-current=page] {
   border:0;
   border-radius:var(--control);
   background:var(--accent);
-  color:white;
+  color:var(--button-ink);
   font:inherit;
   font-weight:650;
   min-height:48px;
@@ -151,7 +155,7 @@ nav a:hover,nav a[aria-current=page] {
   transition:background var(--motion)
 }
 .button:hover,button:hover {
-  background:var(--ink)
+  background:var(--button-hover)
 }
 .availability {
   font-size:14px;
@@ -163,7 +167,7 @@ nav a:hover,nav a[aria-current=page] {
   background:var(--subtle);
   border-radius:24px;
   overflow:hidden;
-  background-image:radial-gradient(#211b2510 1px,transparent 1px);
+  background-image:radial-gradient(#ffffff12 1px,transparent 1px);
   background-size:16px 16px
 }
 .scene-label {
@@ -183,7 +187,7 @@ nav a:hover,nav a[aria-current=page] {
   background:var(--brand);
   border:2px solid #211b2555;
   border-radius:8px;
-  box-shadow:16px 20px 0 #211b2510;
+  box-shadow:16px 20px 0 var(--shadow);
   overflow:hidden
 }
 .court:before {
@@ -234,8 +238,8 @@ nav a:hover,nav a[aria-current=page] {
   position:absolute;
   width:13px;
   height:13px;
-  background:var(--ink);
-  border:3px solid var(--background);
+  background:var(--button-ink);
+  border:3px solid #f2ede7;
   border-radius:50%;
   box-shadow:0 0 0 5px #211b2515
 }
@@ -258,8 +262,8 @@ nav a:hover,nav a[aria-current=page] {
 .activity-card {
   position:absolute;
   background:var(--surface);
-  border:1px solid #211b2510;
-  box-shadow:0 12px 32px #211b2510;
+  border:1px solid var(--border);
+  box-shadow:0 12px 32px var(--shadow);
   border-radius:var(--radius);
   padding:20px 24px;
   display:grid;
@@ -362,13 +366,6 @@ h2 {
 .site-footer p {
   font-size:12px;
   margin:8px 0 0
-}
-.footer-note {
-  flex-basis:100%;
-  font-size:11px;
-  color:var(--muted);
-  border-top:1px solid var(--subtle);
-  padding-top:24px
 }
 .document {
   width:min(760px,calc(100% - 48px));
@@ -530,4 +527,13 @@ button:disabled {
 *,*:before,*:after {
   transition:none!important
 }
+}
+
+@media(max-width:380px) {
+  .site-header {
+    flex-wrap:wrap
+  }
+  .site-header nav {
+    width:100%
+  }
 }

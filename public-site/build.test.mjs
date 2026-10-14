@@ -22,9 +22,25 @@ test('disabled Sentry needs no retention declaration and makes no collection cla
 test('only dedicated public pages and assets are published; operator text is escaped',async()=>{
  const directory=await mkdtemp(join(tmpdir(),'heads-public-'));
  await build({...fixture,HEADS_PUBLIC_OPERATOR:'<script>unsafe</script>'},directory);
- assert.deepEqual((await readdir(directory)).sort(),['config.js','delete-account.html','portal.js','privacy.html','style.css','support.html','terms.html']);
+ assert.deepEqual((await readdir(directory)).sort(),['config.js','delete-account.html','index.html','portal.js','privacy.html','style.css','support.html','terms.html']);
  assert.match(await readFile(join(directory,'privacy.html'),'utf8'),/&lt;script&gt;/);
  const portal=await readFile(join(directory,'portal.js'),'utf8');
  assert.match(portal,/create_user:false/);assert.match(portal,/\/functions\/v1\/delete-account/);
  assert.doesNotMatch(portal,/localStorage|sessionStorage|console\./);
+});
+
+test('homepage and document navigation publish together without external resources',async()=>{
+ const directory=await mkdtemp(join(tmpdir(),'heads-public-design-'));
+ await build(fixture,directory);
+ const home=await readFile(join(directory,'index.html'),'utf8');
+ assert.match(home,/Coming soon to iPhone/);
+ assert.match(home,/not live activity/);
+ for(const slug of ['privacy','terms','support','delete-account']){
+  assert.ok(home.includes('href="'+slug+'.html"'));
+  const page=await readFile(join(directory,slug+'.html'),'utf8');
+  assert.ok(page.includes('href="index.html"'));
+  assert.ok(page.includes('href="'+slug+'.html" aria-current="page"'));
+  assert.match(page,/class="document"/);
+ }
+ assert.doesNotMatch(home,/(?:src|href)="http[s]?:/);
 });

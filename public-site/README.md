@@ -1,6 +1,6 @@
 # Heads public legal artifact
 
-`npm run public-site:build` produces only privacy, terms, support and deletion HTML plus three local assets in ignored `public-site/dist`. It does not copy repository documentation. `npm run public-site:test` verifies publication gating and the portal's auth/deletion/reconciliation flow.
+`node public-site/build.mjs` produces the homepage, privacy, terms, support and deletion HTML plus three local assets in ignored `public-site/dist`. It does not copy repository documentation. `node --test public-site/build.test.mjs public-site/portal.test.mjs` verifies publication gating and the portal's auth/deletion/reconciliation flow.
 
 Before publishing, the owner must confirm a monitored support address and operator identity, review policy wording against actual hosting/email/backups and launch jurisdictions, and configure these GitHub `public-site` environment variables:
 
